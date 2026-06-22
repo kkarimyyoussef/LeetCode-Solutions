@@ -16,5 +16,5 @@ GROUP BY
     l.genre,
     l.publication_year,
     l.total_copies
-HAVING COUNT(b.record_id) = l.total_copies
+HAVING COUNT(l.author) = l.total_copies
 ORDER BY current_borrowers DESC, l.title;
