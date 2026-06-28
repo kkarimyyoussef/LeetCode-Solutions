@@ -3,3 +3,9 @@ DENSE_RANK() OVER (PARTITION BY department ORDER BY salary DESC)
 │                  │                         └── 2. sort within each bucket
 │                  └── 1. split into buckets
 └── 3. assign numbers inside each bucket
+
+
+
+
+You cannot put WHERE rn <= 3 in the same SELECT as the ROW_NUMBER. SQL evaluates WHERE before window functions. The rn column does not exist yet when WHERE runs. You have to compute rn first (in a CTE or subquery), then filter on it in an outer query. The classic failure here is collapsing both steps into one SELECT and watching the engine throw a syntax error live. The CTE is not optional. Write it, name it, then filter.
+
