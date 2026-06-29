@@ -1,0 +1,10 @@
+Aggregate Functions: EX: COUNT, MAX, MIN, SUM, AVG
+- They collapse rows into a single value 
+- combined with GROUP BY, which is a clause that tells aggreate functions which rows to collapse 
+
+Window Functions: EX: DENSE_RANK, ROW_NUMBER, RANK, SUM, AVG can all be used as window functions. T
+- The OVER() clause is what makes them a window function — without it they behave normally.
+
+
+WHERE filters before grouping — so you can't use aggregate functions like COUNT in it.
+HAVING filters after grouping, which is exactly when the count is available.
