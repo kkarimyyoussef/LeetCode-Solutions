@@ -4,7 +4,7 @@ WITH Ranked as(
         Department.name AS Department,
         Employee.name AS Employee,
         Employee.salary As Salary,
-    DENSE_RANK() OVER (PARTITION BY Department.id ORDER BY Employee.salary DESC) AS rn
+    RANK() OVER (PARTITION BY Department.id ORDER BY Employee.salary DESC) AS rn
     FROM Department
     JOIN Employee
     ON Department.id = Employee.departmentid
